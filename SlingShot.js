@@ -4,18 +4,22 @@ class SlingShot{
             bodyA: BodyA,
             pointB: PointB,
             stiffness: 0.04,
-            length: 10
+            length: 20
         }
-        this.pointB= PointB;
-        this.chain = Constraint.create(options);
-        World.add(world, this.chain);
+        this.pointB = PointB;
+        this.sling = Constraint.create(options);
+        World.add(world, this.sling);
     }
-
+fly(){
+    this.sling.bodyA=null;
+}
     display(){
-        var pointA = this.chain.bodyA.position;
+        if(this.sling.bodyA){
+                   
+        var pointA = this.sling.bodyA.position;
         var pointB = this.pointB;
         strokeWeight(4);
         line(pointA.x, pointA.y, pointB.x, pointB.y);
-    }
-    
+        }          
 }
+}   
